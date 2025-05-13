@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zeeshan's Birthday</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364); */
+      background: linear-gradient(to right, #000428, #004e92);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .intro {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      flex-direction: column;
+    }
+    .hidden {
+      display: none;
+    }
+    .btn-custom {
+      background-color: #ffffff;
+      color: #203a43;
+      font-weight: bold;
+    }
+    .btn-custom:hover {
+      background-color: #d1d1d1;
+    }
+    .typewriter {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      min-height: 60px;
+    }
+    .memory-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .memory-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #fff;
+    }
+    .btn-next {
+      background-color: #ffffff;
+      color: #203a43;
+      font-weight: bold;
+    }
+    .btn-next:hover {
+      background-color: #d1d1d1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- START SECTION -->
+<!-- <div class="center-box" id="introBox">
+  <h2>Hi Zeeshan 👋</h2>
+  <p>I want to say you something...</p>
+  <button class="btn btn-custom mt-3" onclick="showWish()">Click Here 🎁</button>
+</div> -->
+<div class="intro" id="introBox">
+  <h2>Hi Zeeshan 👋</h2>
+  <p>I want to say you something...</p>
+  <button class="btn btn-custom mt-3" onclick="showMemories()">Click Here 🎁</button>
+</div>
+
+
+<!-- WISH SECTION -->
+<!-- <div class="center-box hidden" id="wishBox">
+  <div class="balloons">🎈🎉🎂🎁</div>
+  <h3>Happy Birthday Zeeshan</h3>
+  <div class="typewriter" id="typewriterText"></div>
+</div> -->
+<div class="memory-box hidden" id="memoriesSection">
+  <div id="topText" class="mb-3 fs-5"></div>
+  <img id="memoryImage" class="memory-img" src="" alt="memory image" />
+  <div id="bottomText" class="fs-6"></div>
+  <button id="nextBtn" class="btn btn-next mt-3">Next ➤</button>
+</div>
+
+
+<!-- MEMORIES SECTION -->
+<!-- <div class="memory-box hidden" id="memoriesSection">
+  <div id="topText" class="mb-3 fs-5"></div>
+  <img id="memoryImage" class="memory-img" src="" alt="memory image" />
+  <div id="bottomText" class="fs-6"></div>
+  <button id="nextBtn" class="btn btn-next mt-3">Next ➤</button>
+</div> -->
+<div class="wish hidden" id="wishBox">
+  <div class="balloons">🎈🎉🎂🎁</div>
+  <h3>Happy Birthday Zeeshan</h3>
+  <div class="typewriter" id="typewriterText"></div>
+</div>
+
+
+<script>
+  // const messageLines = [
+  //   "You are not just my friend... you're my blessing... ✨",
+  //   "Dur ho... lekin dil ky sab sy kareeb ho... 💌",
+  //   "Hmasha muskuraty raho, har din nayi umeedon sy bhara ho... ☀️",
+  //   "Tum jiyo hazaron saal... 🎉",
+  //   "Duniya ki har khushi tumhary kadmon mein ho... 🌍",
+  //   "Kamyabi tumhari pehchaan ban jaye... 💼",
+  //   "Har manzil tumhary liye asaan ho, har raasta roshan ho... 🌟",
+  //   "Allah taala tumhein har gham, har takleef sy mehfooz rakhay... 🕊️",
+  //   "Tmhy kabhi koi gham chhoo na saky, koi garam hawa bhi na lagy... 🤍",
+  //   "Allah tumhein ilm, samajh or hikmat sy nawazay...📖",
+  //   "Tumhara har din barkat bhara ho, or har raat sukoon wali ho... 🌙",
+  //   "Rizq mein izafa ho, sehat mein barkat ho, or har mushkil asaan ho... 💫",
+  //   "Tumhein duniya ki har ni’mat naseeb ho, or akhirat mein bhi kamiyabi mily... 🌸",
+  //   "Ameen SumAmeen... 🤲",
+  //   "Happy Birthday Zeeshan! 🎂"
+  // ];
+
+  // let i = 0, j = 0, isDeleting = false;
+  // let currentText = "";
+  // const typeTarget = document.getElementById("typewriterText");
+
+  // function type() {
+  //   if (i < messageLines.length) {
+  //     if (!isDeleting && j <= messageLines[i].length) {
+  //       currentText = messageLines[i].substring(0, j++);
+  //       typeTarget.innerHTML = currentText;
+  //       setTimeout(type, 100);
+  //     } else if (!isDeleting) {
+  //       isDeleting = true;
+  //       setTimeout(type, 1500);
+  //     } else if (isDeleting && j >= 0) {
+  //       currentText = messageLines[i].substring(0, j--);
+  //       typeTarget.innerHTML = currentText;
+  //       setTimeout(type, 50);
+  //     } else {
+  //       isDeleting = false;
+  //       i++;
+  //       setTimeout(type, 500);
+  //     }
+  //   } else {
+  //     // After wishes done, show memories
+  //     setTimeout(() => {
+  //       document.getElementById("wishBox").classList.add("hidden");
+  //       document.getElementById("memoriesSection").classList.remove("hidden");
+  //     }, 1000);
+  //   }
+  // }
+
+  // function showWish() {
+  //   document.getElementById("introBox").classList.add("hidden");
+  //   document.getElementById("wishBox").classList.remove("hidden");
+  //   setTimeout(type, 1000);
+  // }
+
+  // // MEMORIES SECTION SCRIPT
+  // const memories = [
+  //   {
+  //     top: "Hamari mulaqat ek Facebook group 'Haseen Log' mein hui...",
+  //     img: "memory1.jpg",
+  //     bottom: "Woh choti choti comments... jaise kisi kahani ka shuru hona."
+  //   },
+  //   {
+  //     top: "Messenger group bana... jahan tum, main aur meri 2 dostien thay...",
+  //     img: "memory2.jpg",
+  //     bottom: "Group ki baatein, hansi mazaak... sab yaadgar ban gaya."
+  //   },
+  //   {
+  //     top: "Phir sab chale gaye... sirf hello reh gaya...",
+  //     img: "memory3.jpg",
+  //     bottom: "Aur tab shayad dosti ka asli imtihaan shuru hua."
+  //   },
+  //   {
+  //     top: "2020 ke Ramzan mein PUBG aur Ludo...",
+  //     img: "pubg-ludo.jpg",
+  //     bottom: "Roz roz baatein, games aur woh connection strong hota gaya 🎮"
+  //   },
+  //   {
+  //     top: "Har mushkil waqt mein tum saath thay...",
+  //     img: "support.jpg",
+  //     bottom: "Baba ki death... mood swings... tum kabhi nahi chale gaye."
+  //   },
+  //   {
+  //     top: "Happy Birthday Zeeshan!",
+  //     img: "birthday.jpg",
+  //     bottom: "Tum sirf mere dost nahi — meri dua ho, meri blessing ho! 💙"
+  //   }
+  // ];
+
+  // let currentIndex = 0;
+  // const topText = document.getElementById("topText");
+  // const memoryImage = document.getElementById("memoryImage");
+  // const bottomText = document.getElementById("bottomText");
+  // const nextBtn = document.getElementById("nextBtn");
+
+  // function showMemory(index) {
+  //   const mem = memories[index];
+  //   topText.textContent = mem.top;
+  //   memoryImage.src = mem.img;
+  //   bottomText.textContent = mem.bottom;
+  // }
+
+  // nextBtn.addEventListener("click", () => {
+  //   currentIndex++;
+  //   if (currentIndex < memories.length) {
+  //     showMemory(currentIndex);
+  //   } else {
+  //     nextBtn.disabled = true;
+  //     nextBtn.textContent = "That's our story 💌";
+  //   }
+  // });
+
+  // showMemory(currentIndex);
+  // Show memories after clicking intro button
+function showMemories() {
+  document.getElementById("introBox").classList.add("hidden");
+  document.getElementById("memoriesSection").classList.remove("hidden");
+}
+
+// Memories content
+const memories = [
+  {
+    top: "Hamari mulaqat ek Facebook group 'Haseen Log' mein hui...",
+    img: "memory1.jpg",
+    bottom: "Woh choti choti comments... jaise kisi kahani ka shuru hona."
+  },
+  {
+    top: "Messenger group bana... tum, main aur meri 2 dostien...",
+    img: "memory2.jpg",
+    bottom: "Group ki baatein, hansi mazaak... sab yaadgar ban gaya."
+  },
+  {
+    top: "2020 Ramzan mein PUBG, Ludo aur roz contact...",
+    img: "pubg.jpg",
+    bottom: "Roz roz baatein aur strong bonding 🎮"
+  },
+  {
+    top: "Har mushkil waqt mein tum saath thay...",
+    img: "support.jpg",
+    bottom: "Baba ki death, mood swings... tum kabhi nahi gaye."
+  }
+];
+
+let currentIndex = 0;
+
+function showMemory(index) {
+  const mem = memories[index];
+  document.getElementById("topText").textContent = mem.top;
+  document.getElementById("memoryImage").src = mem.img;
+  document.getElementById("bottomText").textContent = mem.bottom;
+}
+
+// Handle memory navigation
+document.getElementById("nextBtn").addEventListener("click", () => {
+  currentIndex++;
+  if (currentIndex < memories.length) {
+    showMemory(currentIndex);
+  } else {
+    // All memories done – show birthday wish
+    document.getElementById("memoriesSection").classList.add("hidden");
+    document.getElementById("wishBox").classList.remove("hidden");
+    setTimeout(type, 1000); // start typewriter
+  }
+});
+
+// Initially show first memory
+showMemory(currentIndex);
+
+// Typewriter Birthday Wish
+const messageLines = [
+  "You are not just my friend... you're my blessing... ✨",
+  "Dur ho... lekin dil ky sab sy kareeb ho... 💌",
+  "Hmasha muskuraty raho, har din nayi umeedon sy bhara ho... ☀️",
+  "Tum jiyo hazaron saal... 🎉",
+  "Duniya ki har khushi tumhary kadmon mein ho... 🌍",
+  "Kamyabi tumhari pehchaan ban jaye... 💼",
+  "Har manzil tumhary liye asaan ho... 🌟",
+  "Allah har gham se tumhein mehfooz rakhe... 🕊️",
+  "Tumhein ilm, samajh aur hikmat naseeb ho...📖",
+  "Ameen SumAmeen... 🤲",
+  "Happy Birthday Zeeshan! 🎂"
+];
+
+let i = 0, j = 0, isDeleting = false;
+let currentText = "";
+const typeTarget = document.getElementById("typewriterText");
+
+function type() {
+  if (i < messageLines.length) {
+    if (!isDeleting && j <= messageLines[i].length) {
+      currentText = messageLines[i].substring(0, j++);
+      typeTarget.innerHTML = currentText;
+      setTimeout(type, 100);
+    } else if (!isDeleting) {
+      isDeleting = true;
+      setTimeout(type, 1500);
+    } else if (isDeleting && j >= 0) {
+      currentText = messageLines[i].substring(0, j--);
+      typeTarget.innerHTML = currentText;
+      setTimeout(type, 50);
+    } else {
+      isDeleting = false;
+      i++;
+      j = 0;
+      setTimeout(type, 500);
+    }
+  }
+}
+
+</script>
+</body>
+</html>

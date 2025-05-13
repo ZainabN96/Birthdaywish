@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yaadein - Zeeshan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* masculine gradient */
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .memory-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .memory-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #fff;
+    }
+    .btn-next {
+      margin-top: 20px;
+      background-color: #ffffff;
+      color: #203a43;
+      font-weight: bold;
+    }
+    .btn-next:hover {
+      background-color: #d1d1d1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="memory-box">
+  <div id="topText" class="mb-3 fs-5"></div>
+  <img id="memoryImage" class="memory-img" src="" alt="memory image" />
+  <div id="bottomText" class="fs-6"></div>
+  <button id="nextBtn" class="btn btn-next">Next ➤</button>
+</div>
+
+<script>
+  const memories = [
+    {
+      top: "Hamari mulaqat ek Facebook group 'Haseen Log' mein hui...",
+      img: "memory1.jpg", // <-- replace with actual image filename
+      bottom: "Woh choti choti comments... jaise kisi kahani ka shuru hona."
+    },
+    {
+      top: "Messenger group bana... jahan tum, main aur meri 2 dostien thay...",
+      img: "memory2.jpg",
+      bottom: "Group ki baatein, hansi mazaak... sab yaadgar ban gaya."
+    },
+    {
+      top: "Phir sab chale gaye... sirf hello reh gaya...",
+      img: "memory3.jpg",
+      bottom: "Aur tab shayad dosti ka asli imtihaan shuru hua."
+    },
+    {
+      top: "2020 ke Ramzan mein PUBG aur Ludo...",
+      img: "pubg-ludo.jpg",
+      bottom: "Roz roz baatein, games aur woh connection strong hota gaya 🎮"
+    },
+    {
+      top: "Har mushkil waqt mein tum saath thay...",
+      img: "support.jpg",
+      bottom: "Baba ki death... mood swings... tum kabhi nahi chale gaye."
+    },
+    {
+      top: "Happy Birthday Zeeshan!",
+      img: "birthday.jpg",
+      bottom: "Tum sirf mere dost nahi — meri dua ho, meri blessing ho! 💙"
+    }
+  ];
+
+  let currentIndex = 0;
+
+  const topText = document.getElementById("topText");
+  const memoryImage = document.getElementById("memoryImage");
+  const bottomText = document.getElementById("bottomText");
+  const nextBtn = document.getElementById("nextBtn");
+
+  function showMemory(index) {
+    const mem = memories[index];
+    topText.textContent = mem.top;
+    memoryImage.src = mem.img;
+    bottomText.textContent = mem.bottom;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex++;
+    if (currentIndex < memories.length) {
+      showMemory(currentIndex);
+    } else {
+      nextBtn.disabled = true;
+      nextBtn.textContent = "That's our story 💌";
+    }
+  });
+
+  // Show first memory on load
+  showMemory(currentIndex);
+</script>
+
+</body>
+</html>
