@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For you - Zeeshan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      background: linear-gradient(-45deg, #00042800, #2876bb, #00042800, #004e92);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      color: rgb(0, 0, 0);
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 30px;
+    }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .intro, .memory-box, .wish {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .btn-custom, .btn-next {
+      background-color: #ffffff;
+      color: #203a43;
+      font-weight: bold;
+    }
+
+    .btn-custom:hover, .btn-next:hover {
+      background-color: #cccccc;
+    }
+
+    .memory-img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin: 20px 0;
+      background-color: transparent;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s forwards;
+    }
+
+    .slide-in {
+      animation: slideIn 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .balloons {
+      font-size: 2.5rem;
+      animation: float 3s ease-in-out infinite alternate;
+      margin-bottom: 20px;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0px);
+      }
+      to {
+        transform: translateY(-20px);
+      }
+    }
+
+    .typewriter {
+      border-right: 2px solid #fff;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      animation: blink 0.7s steps(1) infinite;
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Intro Section -->
+<!-- <div class="intro fade-in" id="introBox">
+  <h2>Hi Zeeshan 👋</h2>
+  <p>I want to say you something...</p>
+  <button class="btn btn-custom mt-3" onclick="showMemories()">Click Here</button>
+</div> -->
+
+<!-- Intro Section -->
+<div class="intro fade-in" id="introBox">
+  <h2 id="introHeading"></h2>
+  <p id="introPara"></p>
+  <button class="btn btn-custom mt-3" id="startBtn" onclick="showMemories()" style="display: none;">
+    <i class="fas fa-arrow-right"></i> Click Here
+  </button>
+</div>
+
+
+
+<!-- Memory Section -->
+<div class="memory-box hidden" id="memoriesSection">
+  <div id="topText" class="mb-3 fs-5"><span id="topTypewriter"></span></div>
+  <img id="memoryImage" class="memory-img" src="" alt="memory image" />
+  <div id="bottomText" class="fs-6"><span id="bottomTypewriter"></span></div>
+  <button id="nextBtn" class="btn btn-next mt-3">Next</button>
+</div>
+
+<!-- Birthday Wish Section -->
+<div class="wish hidden" id="wishBox">
+  <!-- <div class="balloons">🎈🎈🎈🎈🎈</div> -->
+  <div class="balloons text-danger">
+    <i class="fas fa-heart"></i>
+    <i class="fas fa-heart"></i>
+    <i class="fas fa-heart"></i>
+    <i class="fas fa-heart"></i>
+    <i class="fas fa-heart"></i>
+  </div>
+  <h3>For You</h3>
+  <!-- <div class="typewriter mt-3" id="typewriterText"></div> -->
+   <!-- <div id="birthdayMessage" style="font-size: 20px; line-height: 1.8;"></div> -->
+  <div id="birthdayMessage" style="font-size: 20px; line-height: 1.8;"></div>
+</div>
+
+<!-- JavaScript Logic -->
+<!-- <script>
+  const memories = [
+    {
+      top: "Hamari mulaqat ek Facebook group 'Haseen Log' mein hui...",
+      img: "img/m1.jpg",
+      bottom: "Woh choti choti comments... jaisy kisi kahani ka shuru hona."
+    },
+    {
+      top: "Messenger group bana... tum, main or meri 2 dostien...",
+      img: "img/memory2.jpeg",
+      bottom: "Group ki baatein, hansi mazaak... sab yaadgar ban gaya..."
+    },
+    {
+      top: "2020 Ramzan mein Ludo, pubg or roz contact...",
+      img: "img/ludo.jpg",
+      bottom: "Roz roz baatein or strong bonding..."
+    },
+    {
+      top: "Mera tmhy stories sunna",
+      img: "img/story.jpg",
+      bottom: "Tm intrested ni hoty thy phr b interest show krwaty thy..."
+    },
+    {
+      top: "Our Nick Names",
+      img: "img/names.jpg",
+      bottom: "Hm ek dusry ko phly uncle aunty kehty thy phr jin churail etc..."
+    },
+    {
+      top: "Har mushkil waqt mein tum saath thay...",
+      img: "img/support.jpg",
+      bottom: "Baba ki death, mood swings... tum kabhi nahi gaye."
+    },
+    {
+      top: "We are much same",
+      img: "img/zeenab.jpg",
+      bottom: "Itna acha time ek sth duzara hai, acha b or bura b... tm ny kbi sth nai chora...."
+    },
+    {
+      top: "Thank You",
+      img: "img/thnakyou.png",
+      bottom: "Itna saath dyny k liye thnk you..."
+    }
+  ];
+
+  let currentIndex = 0;
+
+  function typeWriterEffect(elementId, text, callback) {
+    let i = 0;
+    const speed = 40;
+    const element = document.getElementById(elementId);
+    element.textContent = "";
+    function type() {
+      if (i < text.length) {
+        element.textContent += text.charAt(i++);
+        setTimeout(type, speed);
+      } else if (callback) {
+        callback();
+      }
+    }
+    type();
+  }
+
+  function showMemory(index) {
+    const mem = memories[index];
+    document.getElementById("memoryImage").src = mem.img;
+
+    // Animate top and bottom text with typewriter
+    typeWriterEffect("topTypewriter", mem.top, () => {
+      setTimeout(() => {
+        typeWriterEffect("bottomTypewriter", mem.bottom);
+      }, 300);
+    });
+
+    const memorySection = document.getElementById("memoriesSection");
+    memorySection.classList.remove("slide-in");
+    void memorySection.offsetWidth;
+    memorySection.classList.add("slide-in");
+  }
+
+  function showMemories() {
+    document.getElementById("introBox").classList.add("hidden");
+    const memory = document.getElementById("memoriesSection");
+    memory.classList.remove("hidden");
+    memory.classList.add("fade-in", "slide-in");
+    showMemory(currentIndex);
+  }
+
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    currentIndex++;
+    if (currentIndex < memories.length) {
+      showMemory(currentIndex);
+    } else {
+      document.getElementById("memoriesSection").classList.add("hidden");
+      const wish = document.getElementById("wishBox");
+      wish.classList.remove("hidden");
+      wish.classList.add("fade-in");
+      setTimeout(type, 1000);
+    }
+  });
+
+  const messageLines = [
+    "You are not just my friend... you're my blessing... ✨",
+    "Dur ho... lekin dil ky sab sy kareeb ho...",
+    "Hmasha muskuraty raho, har din nayi umeedon sy bhara ho...",
+    "Tum jiyo hazaron saal...",
+    "Duniya ki har khushi tumhary kadmon mein ho...",
+    "Kamyabi tumhari pehchaan ban jaye...",
+    "Har manzil tumhary liye asaan ho, har raasta roshan ho...",
+    "Allah taala tumhein har gham, har takleef sy mehfooz rakhay...",
+    "Tmhy kabhi koi gham chhoo na saky, koi garam hawa bhi na lagy...",
+    "Tumhara har din barkat bhara ho, or har raat sukoon wali ho... ",
+    "Rizq mein izafa ho, sehat mein barkat ho, or har mushkil asaan ho... ",
+    "Tumhein duniya ki har ni’mat naseeb ho, or akhirat mein bhi kamiyabi mily... ",
+    "Ameen SumAmeen... 🤲",
+    "Happy Birthday Zeeshan! 🎂"
+  ];
+
+  let i = 0, j = 0, isDeleting = false;
+  let currentText = "";
+  const typeTarget = document.getElementById("typewriterText");
+
+  function type() {
+    if (i < messageLines.length) {
+      if (!isDeleting && j <= messageLines[i].length) {
+        currentText = messageLines[i].substring(0, j++);
+        typeTarget.innerHTML = currentText;
+        setTimeout(type, 100);
+      } else if (!isDeleting) {
+        isDeleting = true;
+        setTimeout(type, 1500);
+      } else if (isDeleting && j >= 0) {
+        currentText = messageLines[i].substring(0, j--);
+        typeTarget.innerHTML = currentText;
+        setTimeout(type, 50);
+      } else {
+        isDeleting = false;
+        i++;
+        j = 0;
+        setTimeout(type, 500);
+      }
+    }
+  }
+</script> -->
+
+<!-- 👇 Only replace the <script> part in your existing code with the following updated script -->
+<script>
+  function typeMultipleLines(lines, ids, callback) {
+    let lineIndex = 0;
+    let charIndex = 0;
+
+    function typeLine() {
+      if (lineIndex >= lines.length) {
+        if (callback) callback();
+        return;
+      }
+
+      const el = document.getElementById(ids[lineIndex]);
+      el.innerHTML = ""; // clear previous content
+      charIndex = 0;
+
+      function typeChar() {
+        if (charIndex < lines[lineIndex].length) {
+          el.innerHTML += lines[lineIndex].charAt(charIndex++);
+          setTimeout(typeChar, 50);
+        } else {
+          lineIndex++;
+          setTimeout(typeLine, 300); // wait before next line
+        }
+      }
+
+      typeChar();
+    }
+
+    typeLine();
+  }
+
+  // Call this on DOM ready
+  window.addEventListener("DOMContentLoaded", () => {
+    const introLines = [
+      'Hi Zeeshan',
+      'I want to share something...'
+    ];
+    const introIDs = ['introHeading', 'introPara'];
+
+    typeMultipleLines(introLines, introIDs, () => {
+      document.getElementById("startBtn").style.display = "inline-block";
+    });
+  });
+
+  const memories = [
+    {
+      top: "Hamari mulaqat ek Haseen Log mein hui...",
+      img: "img/me1.jpg",
+      bottom: "Wo choti choti comments... jin sy yeh dosti shuru hui thi..."
+    },
+    {
+      top: "Phr Messenger ka group, jahn tum, main or meri 2 dostien thin...",
+      img: "img/memory2.jpeg",
+      bottom: "Gap shap, hansi mazaak, sab yaadgar ban gaya..."
+    },
+    {
+      top: "Phr dubara sy chating start hui..",
+      img: "img/memory3.jpg",
+      bottom: "Jo k ek zindgi ka hissa ban gii, Bt krty krty pta hii nai chla...."
+    },
+    {
+      top: "2020 Ramzan mein Ludo, pubg",
+      img: "img/ludo.jpg",
+      bottom: "Roz roz baatein krna masti krna... Choti moti nokh jhok..."
+    },
+    {
+      top: "Mera tmhy stories sunna",
+      img: "img/story.jpg",
+      bottom: "Tm intrested nai hoty thy phr b interest show krwaty thy..."
+    },
+    {
+      top: "Our Nick Names",
+      img: "img/names.jpg",
+      bottom: "Hm ny ek dosry ko kitny nickname diye, Uncle Aunty, Jin Churail, Bhensa Bhens etc"
+    },
+    {
+      top: "Har mushkil waqt mei tum saath thy...",
+      img: "img/support.jpg",
+      bottom: "Baba ki death, mood swings, mera bewaja ka gussa krna, hmari laraiyan.... Tm hmsha sth rahy...."
+    },
+    {
+      top: "You become so special...",
+      img: "img/zeenab.jpg",
+      bottom: "Ek acha b or bura b wqt sth guzara lekin tm ny kbi sth nai chora...."
+    },
+    {
+      top: "Thank You",
+      img: "img/10q.png",
+      bottom: "Itna saath dyny k liye thnk you... Mjy bardash krny k liye... Meri Chawaliyan sunny k liye..."
+    }
+  ];
+
+  let currentIndex = 0;
+
+  function typeWriterEffect(elementId, text, callback) {
+    let i = 0;
+    const speed = 40;
+    const element = document.getElementById(elementId);
+    element.textContent = "";
+    function type() {
+      if (i < text.length) {
+        element.textContent += text.charAt(i++);
+        setTimeout(type, speed);
+      } else if (callback) {
+        callback();
+      }
+    }
+    type();
+  }
+
+  function showMemory(index) {
+    const mem = memories[index];
+    const img = document.getElementById("memoryImage");
+    const topEl = document.getElementById("topTypewriter");
+    const bottomEl = document.getElementById("bottomTypewriter");
+    const nextBtn = document.getElementById("nextBtn");
+
+    // Reset visibility
+    img.style.opacity = 0;
+    bottomEl.textContent = "";
+    nextBtn.style.display = "none";
+
+    // Start typing top text
+    typeWriterEffect("topTypewriter", mem.top, () => {
+      // After top text done, show image
+      setTimeout(() => {
+        img.src = mem.img;
+        img.style.transition = "opacity 1s";
+        img.style.opacity = 1;
+
+        // After image shown, show bottom text
+        setTimeout(() => {
+          typeWriterEffect("bottomTypewriter", mem.bottom, () => {
+            // After bottom text done, show next button
+            setTimeout(() => {
+              nextBtn.style.display = "inline-block";
+            }, 400);
+          });
+        }, 1000); // wait for image fade in
+      }, 500); // small pause after top text
+    });
+
+    const memorySection = document.getElementById("memoriesSection");
+    memorySection.classList.remove("slide-in");
+    void memorySection.offsetWidth;
+    memorySection.classList.add("slide-in");
+  }
+
+  function showMemories() {
+    document.getElementById("introBox").classList.add("hidden");
+    const memory = document.getElementById("memoriesSection");
+    memory.classList.remove("hidden");
+    memory.classList.add("fade-in", "slide-in");
+    showMemory(currentIndex);
+  }
+
+  // document.getElementById("nextBtn").addEventListener("click", () => {
+  //   currentIndex++;
+  //   if (currentIndex < memories.length) {
+  //     showMemory(currentIndex);
+  //   } else {
+  //     document.getElementById("memoriesSection").classList.add("hidden");
+  //     const wish = document.getElementById("wishBox");
+  //     wish.classList.remove("hidden");
+  //     wish.classList.add("fade-in");
+  //     setTimeout(type, 1000);
+  //   }
+  // });
+
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    currentIndex++;
+    if (currentIndex < memories.length) {
+      showMemory(currentIndex);
+    } else {
+      document.getElementById("memoriesSection").classList.add("hidden");
+      const wish = document.getElementById("wishBox");
+      wish.classList.remove("hidden");
+      wish.classList.add("fade-in");
+      setTimeout(showLines, 1000); // ✅ Correct function call
+    }
+  });
+
+  const messageLines = [
+    "You are not just my friend... you're my blessing... <i class='fas fa-star'></i>",
+    "Dur ho... lekin dil ky sab sy kareeb ho...",
+    "Hmasha muskuraty raho, har din nayi umeedon sy bhara ho...",
+    "Tum jiyo hazaron saal...",
+    "Duniya ki har khushi tumhary kadmon mein ho...",
+    "Kamyabi tumhari pehchaan ban jaye...",
+    "Har manzil tumhary liye asaan ho, har raasta roshan ho...",
+    "Allah taala tumhein har gham, har takleef sy mehfooz rakhay...",
+    "Tmhy kabhi koi gham chhoo na saky, koi garam hawa bhi na lagy...",
+    "Tumhara har din barkat bhara ho, or har raat sukoon wali ho... ",
+    "Rizq mein izafa ho, sehat mein barkat ho, or har mushkil asaan ho... ",
+    "Tumhein duniya ki har ni’mat naseeb ho, or akhirat mein bhi kamiyabi mily... ",
+    "Ameen SumAmeen... 🤲",
+    "Happy Birthday Zeeshan! <i class='fas fa-birthday-cake'></i>"
+  ];
+
+  const container = document.getElementById("birthdayMessage");
+    let currentLine = 0;
+
+    function typeLine(htmlLine, callback) {
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = htmlLine;
+      const fullText = tempDiv.textContent || tempDiv.innerText;
+
+      let i = 0;
+      const p = document.createElement("p");
+      container.appendChild(p);
+
+      function typeChar() {
+        if (i < fullText.length) {
+          p.textContent += fullText.charAt(i);
+          i++;
+          setTimeout(typeChar, 40);
+        } else {
+          p.innerHTML = htmlLine;
+          setTimeout(callback, 700);
+        }
+      }
+
+      typeChar();
+      //showLines();
+    }
+
+    function showLines() {
+      if (currentLine < messageLines.length) {
+        typeLine(messageLines[currentLine], () => {
+          currentLine++;
+          showLines();
+        });
+      }
+    }
+
+    //showLines();
+  
+  // const container = document.getElementById("birthdayMessage");
+
+  // let currentLine = 0;
+
+  // function typeLine(line, callback) {
+  //   let i = 0;
+  //   const paragraph = document.createElement("p");
+  //   container.appendChild(paragraph);
+
+  //   function typeChar() {
+  //     if (i < line.length) {
+  //       paragraph.innerHTML += line.charAt(i);
+  //       i++;
+  //       setTimeout(typeChar, 40); // speed of typing each character
+  //     } else {
+  //       // After full line typed, wait before next
+  //       setTimeout(callback, 700);
+  //     }
+  //   }
+
+  //   typeChar();
+  // }
+
+  // function showLines() {
+  //   if (currentLine < messageLines.length) {
+  //     const tempDiv = document.createElement("div");
+  //     tempDiv.innerHTML = messageLines[currentLine];
+  //     const plainText = tempDiv.textContent || tempDiv.innerText;
+
+  //     typeLine(plainText, () => {
+  //       // After text typed, set full HTML for icons
+  //       container.lastChild.innerHTML = messageLines[currentLine];
+  //       currentLine++;
+  //       showLines();
+  //     });
+  //   }
+  // }
+
+  // showLines();
+
+  // const container = document.getElementById("birthdayMessage");
+
+  // let currentLine = 0;
+
+  // function showNextLine() {
+  //   if (currentLine < messageLines.length) {
+  //     const line = document.createElement("p");
+  //     line.innerHTML = messageLines[currentLine];
+  //     container.appendChild(line);
+  //     currentLine++;
+  //     setTimeout(showNextLine, 2000); // delay between lines
+  //   }
+  // }
+
+  // showNextLine();
+
+  // let i = 0, j = 0, isDeleting = false;
+  // let currentText = "";
+  // const typeTarget = document.getElementById("typewriterText");
+
+  // function type() {
+  //   if (i < messageLines.length) {
+  //     if (!isDeleting && j <= messageLines[i].length) {
+  //       currentText = messageLines[i].substring(0, j++);
+  //       typeTarget.innerHTML = currentText;
+  //       setTimeout(type, 100);
+  //     } else if (!isDeleting) {
+  //       isDeleting = true;
+  //       setTimeout(type, 1500);
+  //     } else if (isDeleting && j >= 0) {
+  //       currentText = messageLines[i].substring(0, j--);
+  //       typeTarget.innerHTML = currentText;
+  //       setTimeout(type, 50);
+  //     } else {
+  //       isDeleting = false;
+  //       i++;
+  //       j = 0;
+  //       setTimeout(type, 500);
+  //     }
+  //   }
+  // }
+</script>
+
+</body>
+</html>
