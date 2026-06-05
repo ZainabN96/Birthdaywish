@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
   createStars();
 
   const introLines = [
-    'Hi',
+    'Hi Zeeshan! 🎉',
     'I want to share something...'
   ];
   const introIDs = ['introHeading', 'introPara'];
@@ -67,46 +67,46 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 const memories = [
-  {
-    top: "Hamari mulaqat ek Haseen Log mein hui...",
-    img: "img/me1.jpg",
-    bottom: "Wo choti choti comments... jin sy yeh dosti shuru hui thi..."
-  },
-  {
-    top: "Phr Messenger ka group, jahn tum, main or meri 2 dostien thin...",
-    img: "img/memory2.jpeg",
-    bottom: "Gap shap, hansi mazaak, sab yaadgar ban gaya..."
-  },
-  {
-    top: "Phr dubara sy chating start hui..",
-    img: "img/memory3.jpg",
-    bottom: "Jo k ek zindgi ka hissa ban gii, Bt krty krty pta hii nai chla...."
-  },
-  {
-    top: "2020 Ramzan",
-    img: "img/ludo.jpg",
-    bottom: "Roz roz baatein krna masti krna... Choti moti nokh jhok..."
-  },
-  {
-    top: "Mera Boniyan",
-    img: "img/story.jpg",
-    bottom: "Tm intrested nai hoty thy phr b interest show krwaty thy..."
-  },
-  {
-    top: "Our Nick Names",
-    img: "img/names.jpg",
-    bottom: "Hm ny ek dosry ko kitny nickname diye, Uncle Aunty, Jin Churail, Bhensa Bhens etc"
-  },
-  {
-    top: "Har mushkil waqt mei tum saath thy...",
-    img: "img/support.jpg",
-    bottom: "Mood swings, mera bewaja ka gussa krna, hmari laraiyan.... Tm hmsha sth rahy...."
-  },
-  {
-    top: "You become so special...",
-    img: "img/zeenab_2.jpg",
-    bottom: "Ek acha b or bura b wqt sth guzara lekin tm ny kbi sth nai chora...."
-  },
+  // {
+  //   top: "Hamari mulaqat ek FB group mein hui...",
+  //   img: "img/me1.jpg",
+  //   bottom: "Wo choti choti comments... jin sy yeh dosti shuru hui thi..."
+  // },
+  // {
+  //   top: "Phr Messenger ka group, jahn tum, main or meri 2 dostien thin...",
+  //   img: "img/memory2.jpeg",
+  //   bottom: "Gap shap, hansi mazaak, sab yaadgar ban gaya..."
+  // },
+  // {
+  //   top: "Messenger Chat...",
+  //   img: "img/memory3.jpg",
+  //   bottom: "Jo k ek zindgi ka hissa ban gii, Bt krty krty pta hii nai chla k simple dosti .... Kab mery bestie ban gye.... 🤍"
+  // },
+  // {
+  //   top: "2020 Ramzan",
+  //   img: "img/ludo.jpg",
+  //   bottom: "Roz roz baatein krna masti krna... Choti moti nokh jhok..."
+  // },
+  // {
+  //   top: "Mera Boniyan",
+  //   img: "img/story.jpg",
+  //   bottom: "Meri fazool si baatein bhi... Tm itni interest k sath sunni... 🤍"
+  // },
+  // {
+  //   top: "Our Nick Names",
+  //   img: "img/names.jpg",
+  //   bottom: "Hm ny ek dosry ko kitny nickname diye, Uncle Aunty, Jin Churail, Bhensa Bhens etc"
+  // },
+  // {
+  //   top: "Har mushkil waqt mei tum saath thy...",
+  //   img: "img/support.jpg",
+  //   bottom: "Mood swings, mera bewaja ka gussa krna, hmari laraiyan.... Tm hmsha sth rahy...."
+  // },
+  // {
+  //   top: "You become so special...",
+  //   img: "img/zeenab_2.jpg",
+  //   bottom: "Achy bury dono waqt mein sath raha...."
+  // },
   {
     top: "Thank You",
     img: "img/Us.png",
@@ -200,7 +200,6 @@ const messageLines = [
   "You are not just my friend... you're my blessing... ✨",
   "Dur ho... lekin dil ky sab sy kareeb ho...",
   "Hmasha muskuraty raho, har din nayi umeedon sy bhara ho...",
-  "Tum jiyo hazaron saal...",
   "Duniya ki har khushi tumhary kadmon mein ho...",
   "Kamyabi tumhari pehchaan ban jaye...",
   "Har manzil tumhary liye asaan ho, har raasta roshan ho...",
