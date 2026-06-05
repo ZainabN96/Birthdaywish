@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
   createStars();
 
   const introLines = [
-    'Hi Zeeshan! 🎉',
+    'Hi Zeeshan!',
     'I want to share something...'
   ];
   const introIDs = ['introHeading', 'introPara'];
