@@ -67,46 +67,46 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 const memories = [
-  // {
-  //   top: "Hamari mulaqat ek FB group mein hui...",
-  //   img: "img/me1.jpg",
-  //   bottom: "Wo choti choti comments... jin sy yeh dosti shuru hui thi..."
-  // },
+  {
+    top: "Hamari mulaqat ek FB group mein hui...",
+    img: "img/me1.jpg",
+    bottom: "Wo choti choti comments... jin sy yeh dosti shuru hui thi..."
+  },
   // {
   //   top: "Phr Messenger ka group, jahn tum, main or meri 2 dostien thin...",
   //   img: "img/memory2.jpeg",
   //   bottom: "Gap shap, hansi mazaak, sab yaadgar ban gaya..."
   // },
-  // {
-  //   top: "Messenger Chat...",
-  //   img: "img/memory3.jpg",
-  //   bottom: "Jo k ek zindgi ka hissa ban gii, Bt krty krty pta hii nai chla k simple dosti .... Kab mery bestie ban gye.... 🤍"
-  // },
-  // {
-  //   top: "2020 Ramzan",
-  //   img: "img/ludo.jpg",
-  //   bottom: "Roz roz baatein krna masti krna... Choti moti nokh jhok..."
-  // },
-  // {
-  //   top: "Mera Boniyan",
-  //   img: "img/story.jpg",
-  //   bottom: "Meri fazool si baatein bhi... Tm itni interest k sath sunni... 🤍"
-  // },
-  // {
-  //   top: "Our Nick Names",
-  //   img: "img/names.jpg",
-  //   bottom: "Hm ny ek dosry ko kitny nickname diye, Uncle Aunty, Jin Churail, Bhensa Bhens etc"
-  // },
-  // {
-  //   top: "Har mushkil waqt mei tum saath thy...",
-  //   img: "img/support.jpg",
-  //   bottom: "Mood swings, mera bewaja ka gussa krna, hmari laraiyan.... Tm hmsha sth rahy...."
-  // },
-  // {
-  //   top: "You become so special...",
-  //   img: "img/zeenab_2.jpg",
-  //   bottom: "Achy bury dono waqt mein sath raha...."
-  // },
+  {
+    top: "Messenger Chat...",
+    img: "img/memory3.jpg",
+    bottom: "Jo k ek zindgi ka hissa ban gii, Bt krty krty pta hii nai chla k simple dosti .... Kab mery bestie ban gye.... 🤍"
+  },
+  {
+    top: "2020 Ramzan",
+    img: "img/ludo.jpg",
+    bottom: "Roz roz baatein krna masti krna... Choti moti nokh jhok..."
+  },
+  {
+    top: "Mera Boniyan",
+    img: "img/story.jpg",
+    bottom: "Meri fazool si baatein bhi... Tm itni interest k sath sunni... 🤍"
+  },
+  {
+    top: "Our Nick Names",
+    img: "img/names.jpg",
+    bottom: "Hm ny ek dosry ko kitny nickname diye, Uncle Aunty, Jin Churail, Bhensa Bhens etc"
+  },
+  {
+    top: "Har mushkil waqt mei tum saath thy...",
+    img: "img/support.jpg",
+    bottom: "Mood swings, mera bewaja ka gussa krna, hmari laraiyan.... Tm hmsha sth rahy...."
+  },
+  {
+    top: "You become so special...",
+    img: "img/zeenab_2.jpg",
+    bottom: "Achy bury dono waqt mein sath raha...."
+  },
   {
     top: "Thank You",
     img: "img/Us.png",
