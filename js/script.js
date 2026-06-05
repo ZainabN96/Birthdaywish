@@ -67,47 +67,46 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 const memories = [
-  // {
-  //   top: "Hamari mulaqat ek Haseen Log mein hui...",
-  //   img: "img/me1.jpg",
-  //   bottom: "Wo choti choti comments... jin sy yeh dosti shuru hui thi..."
-  // },
-  // {
-  //   top: "Phr Messenger ka group, jahn tum, main or meri 2 dostien thin...",
-  //   img: "img/memory2.jpeg",
-  //   bottom: "Gap shap, hansi mazaak, sab yaadgar ban gaya..."
-  // },
-  // {
-  //   top: "Phr dubara sy chating start hui..",
-  //   img: "img/memory3.jpg",
-  //   bottom: "Jo k ek zindgi ka hissa ban gii, Bt krty krty pta hii nai chla...."
-  // },
-  // {
-  //   top: "2020 Ramzan",
-  //   img: "img/ludo.jpg",
-  //   bottom: "Roz roz baatein krna masti krna... Choti moti nokh jhok..."
-  // },
-  // {
-  //   top: "Mera Boniyan",
-  //   img: "img/story.jpg",
-  //   bottom: "Tm intrested nai hoty thy phr b interest show krwaty thy..."
-  // },
-  // {
-  //   top: "Our Nick Names",
-  //   img: "img/names.jpg",
-  //   bottom: "Hm ny ek dosry ko kitny nickname diye, Uncle Aunty, Jin Churail, Bhensa Bhens etc"
-  // },
-  // {
-  //   top: "Har mushkil waqt mei tum saath thy...",
-  //   img: "img/support.jpg",
-  //   bottom: "Mood swings, mera bewaja ka gussa krna, hmari laraiyan.... Tm hmsha sth rahy...."
-  // },
+  {
+    top: "Hamari mulaqat ek Haseen Log mein hui...",
+    img: "img/me1.jpg",
+    bottom: "Wo choti choti comments... jin sy yeh dosti shuru hui thi..."
+  },
+  {
+    top: "Phr Messenger ka group, jahn tum, main or meri 2 dostien thin...",
+    img: "img/memory2.jpeg",
+    bottom: "Gap shap, hansi mazaak, sab yaadgar ban gaya..."
+  },
+  {
+    top: "Phr dubara sy chating start hui..",
+    img: "img/memory3.jpg",
+    bottom: "Jo k ek zindgi ka hissa ban gii, Bt krty krty pta hii nai chla...."
+  },
+  {
+    top: "2020 Ramzan",
+    img: "img/ludo.jpg",
+    bottom: "Roz roz baatein krna masti krna... Choti moti nokh jhok..."
+  },
+  {
+    top: "Mera Boniyan",
+    img: "img/story.jpg",
+    bottom: "Tm intrested nai hoty thy phr b interest show krwaty thy..."
+  },
+  {
+    top: "Our Nick Names",
+    img: "img/names.jpg",
+    bottom: "Hm ny ek dosry ko kitny nickname diye, Uncle Aunty, Jin Churail, Bhensa Bhens etc"
+  },
+  {
+    top: "Har mushkil waqt mei tum saath thy...",
+    img: "img/support.jpg",
+    bottom: "Mood swings, mera bewaja ka gussa krna, hmari laraiyan.... Tm hmsha sth rahy...."
+  },
   {
     top: "You become so special...",
     img: "img/zeenab_2.jpg",
     bottom: "Ek acha b or bura b wqt sth guzara lekin tm ny kbi sth nai chora...."
-  }
-  ,
+  },
   {
     top: "Thank You",
     img: "img/Us.png",
@@ -245,25 +244,27 @@ function showLines() {
 
 // Lahore to Islamabad map animation
 function showMapAnimation() {
-  const pathEl         = document.getElementById('flightPath');
   const routeLahore    = document.getElementById('routeLineLahore');
   const routeIslamabad = document.getElementById('routeLineIslamabad');
   const sparkle        = document.getElementById('centerSparkle');
-  const totalLen       = pathEl.getTotalLength();
 
-  // Set up both lines hidden initially
-  [routeLahore, routeIslamabad].forEach(el => {
-    el.style.strokeDasharray  = totalLen;
-    el.style.strokeDashoffset = totalLen;
-  });
+  // Each path has its own length — draw each fully from its city to the center valley
+  const lenL = routeLahore.getTotalLength();
+  const lenI = routeIslamabad.getTotalLength();
+
+  routeLahore.style.strokeDasharray    = lenL;
+  routeLahore.style.strokeDashoffset   = lenL;
+  routeIslamabad.style.strokeDasharray  = lenI;
+  routeIslamabad.style.strokeDashoffset = lenI;
+
   void routeLahore.getBoundingClientRect();
 
-  // Animate both lines from each city toward center simultaneously
+  // Animate both lobes simultaneously — they draw from each city and meet at center
   setTimeout(() => {
     routeLahore.style.transition    = 'stroke-dashoffset 2.2s ease-in-out';
     routeIslamabad.style.transition = 'stroke-dashoffset 2.2s ease-in-out';
-    routeLahore.style.strokeDashoffset    = totalLen / 2;
-    routeIslamabad.style.strokeDashoffset = totalLen / 2;
+    routeLahore.style.strokeDashoffset    = 0;
+    routeIslamabad.style.strokeDashoffset = 0;
   }, 200);
 
   // Type subtitle
